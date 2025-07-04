@@ -4,7 +4,7 @@
 # Variable #
 ############
 
-ZAP_NUMBER=385
+ZAP_NUMBER=575
 KOREUS_URL="https://www.koreus.com/video/koreusity-$ZAP_NUMBER.html"
 DOSSIER="/mnt/storage/Emby/Youtube/Koreus/Koreus-$ZAP_NUMBER"
 
@@ -18,7 +18,8 @@ DAILYMOTION_URL=$(curl -s "https://www.koreus.com/video/koreusity-$ZAP_NUMBER.ht
 echo $DAILYMOTION_URL
 
 # #2 : Download video
-/usr/sbin/yt-dlp -cw -o "$DOSSIER/%(title)s.%(ext)s" "$DAILYMOTION_URL" --remux-video mkv --embed-chapters --download-archive --break-on-existing
+#/usr/sbin/yt-dlp -cw -o "$DOSSIER/%(title)s.%(ext)s" "$DAILYMOTION_URL" --remux-video mkv --embed-chapters --download-archive --break-on-existing
+/usr/sbin/yt-dlp -o "$DOSSIER/%(title)s.%(ext)s" "$DAILYMOTION_URL" --remux-video mkv --embed-chapters 
 
 # #3 : Get image name
 ZAP_NAME_TO_IMAGE=$(ls "$DOSSIER" | grep .mkv)
